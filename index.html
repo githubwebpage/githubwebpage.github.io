@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <title>
+            Big Winner
+        </title>
+        <link href="home/style/animate.min.css" rel="stylesheet"/>
+        <link href="home/style/style.css" rel="stylesheet"/>
+        <script src="static/index/js/cookie_config.js">
+        </script>
+        <script src="home/js/jquery.min.js">
+        </script>
+        <script src="home/js/wow.min.js">
+        </script>
+        <script type="text/javascript">
+            new WOW().init();
+        </script>
+        <style>
+            .login_but ul li:hover {
+                border: 2px solid #f003f0;
+                background: #f003f0;
+                color: #ffffff;
+            }
+            .binding input[type='button'] {
+                background:#f003f0;
+                color:#ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <!--主体-->
+        <div class="st-container">
+            <div class="top">
+                <div class="logo l_float">
+                    <img alt="" src="home/images/logo.png"/>
+                </div>
+                <div class="content">
+                    <div class="select">
+                        <p style="box-shadow: 0px 1px 10px #f000f0; text-shadow:0px 1px 10px #f000f0;">
+                            简体中文
+                        </p>
+                        <ul>
+                            <li class="selected" data-value="简体中文">
+                                简体中文
+                            </li>
+                            <li data-value="English">
+                                English
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="login_topr" style="display: none">
+                        <img alt="" src="home/images/IOS.jpg">
+                            <img alt="" src="home/images/Android.jpg">
+                            </img>
+                        </img>
+                    </div>
+                </div>
+            </div>
+            <div class="login_but" style="bottom:13%">
+                <p style="background:#f103f0; box-shadow:0px 1px 20px #f000f0; color:#ffffff;">
+                    登    录
+                </p>
+                <ul>
+                    <li class="but1" data-id="1" data-value="BTC登录">
+                        BTC登录
+                    </li>
+                    <li class="but2" data-id="2" data-value="ETH登录">
+                        ETH登录
+                    </li>
+                    <li class="but2" data-id="3" data-value="EOS登录">
+                        EOS登录
+                    </li>
+                    <li class="but2" data-id="4" data-value="USDT登录">
+                        USDT登录
+                    </li>
+                </ul>
+            </div>
+            <div class="black_mark">
+            </div>
+            <div class="binding">
+                <form>
+                    <input hidden="" id="login_type" name="login_type" placeholder="" style="color: #FFFFFF" value="1">
+                        <input id="address" maxlength="42" placeholder="请输入钱包地址" type="text">
+                            <input class="binding_but" type="button" value="绑定">
+                            </input>
+                        </input>
+                    </input>
+                </form>
+            </div>
+            <i class="light wow bounceInLeft animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: bounceInLeft;">
+            </i>
+        </div>
+        <script type="text/javascript">
+            var loginType = 1;
+    $(document).ready(function () {
+        //语言版本切换
+        // 点击P标签切换下拉框
+        $('.select > p').on('click', function (event) {
+            $('.select').toggleClass('open');
+            event.stopPropagation();
+        });
+        //点击li标签,赋值、切换下拉框、给选中的li标签添加选中样式同级元素移除选中样式、阻止事件冒泡
+        $('.select ul li').on('click', function (event) {
+            var _this = $(this);
+            $('.select p').text(_this.attr('data-value'));
+            $('.select').toggleClass('open');
+            _this.addClass('selected').siblings().removeClass('selected');
+            event.stopPropagation();
+        });
+
+
+        //登录切换
+        //点击P标签切换下拉框
+        $('.login_but > p').on('click', function (event) {
+            $('.login_but').toggleClass('open');
+            event.stopPropagation();
+        });
+        //点击li标签,赋值、切换下拉框、给选中的li标签添加选中样式同级元素移除选中样式、阻止事件冒泡
+        $('.login_but ul li').on('click', function (event) {
+            var _this = $(this);
+
+            var placeholder = '';
+            var coinId = parseInt(_this.data('id'));
+            if(parseInt(coinId)>0){
+                loginType=coinId;
+            }
+            switch (coinId){
+                case 1:
+                    placeholder = 'BTC';
+                    break;
+                case 2:
+                    placeholder = 'ETH';
+                    break;
+                case 3:
+                    placeholder = 'EOS';
+                    break;
+                case 4:
+                    placeholder = 'USDT';
+                    break;
+                default:
+                    placeholder = 'BTC';
+            }
+            setCookie('coinId',coinId,10000);
+
+            $("#address").attr('placeholder','请输入'+placeholder+'钱包地址');
+
+            $('.login_but p').text(_this.attr('data-value'));
+            $('.login_but').toggleClass('open');
+            _this.addClass('selected').siblings().removeClass('selected');
+            event.stopPropagation();
+        });
+        //点击除下拉框的其它地方，收起下拉框
+        $(document).on('click', function () {
+            $('.select').removeClass('open');
+            $('.login_but').removeClass('open');
+        });
+
+        // 绑定弹出层
+        $(document).ready(function () {
+            $(".but1").click(function () {
+                $('.black_mark').fadeIn();
+                $(".binding").fadeIn();
+            });
+            $(".but2").click(function () {
+                $('.black_mark').fadeIn();
+                $(".binding").fadeIn();
+            });
+            $(".binding_but").click(function () {
+                location.href="index/user.html"
+                // login();
+                /*$('.black_mark').fadeOut();
+                $(".binding").fadeOut();*/
+            });
+        });
+
+    });
+
+
+    function login() {
+        var address = $("#address").val();
+        $.ajax({
+            url:'/index/user/login',
+            type:'POST',
+            dataType:'json',
+            data:{
+                'address':address,
+                'login_type':loginType
+            },
+            success:function (result) {
+                if(result.code==1){
+                    window.location.href= '/index/user/index';
+                }else{
+                    alert(result.msg);
+                }
+            },
+            error:function (result) {
+                alert(result);
+                window.location.reload();
+            }
+        });
+    }
+
+
+    /*设置cookie*/
+    function setCookie(key,value,t) {
+        key = cookiePrefix+key;
+        var oDate=new Date();
+        oDate.setDate(oDate.getDate()+t);
+        document.cookie=key+"="+value+"; expires="+oDate.toDateString()+"; path=/";
+    }
+
+    /*获取cookie*/
+    function getCookie(key){
+        key = cookiePrefix+key;
+        var arr1=document.cookie.split("; ");
+        for(var i=0;i<arr1.length;i++){
+            var arr2=arr1[i].split("=");
+            if(arr2[0]==key){
+                return decodeURI(arr2[1]);
+            }
+        }
+    }
+
+
+    //封装一个移除cookie的函数
+    function removeCookie(key){
+        key = cookiePrefix+key;
+        setCookie(key,"",-1);//把cookie设置为过期
+
+    }
+        </script>
+    </body>
+</html>

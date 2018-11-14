@@ -1,0 +1,586 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body {
+
+    margin: 0px;
+
+    padding: 0px;
+
+    font-size: 13px;
+
+    color: #333333;
+
+    font-family: "微软雅黑";
+
+}
+
+
+
+* {
+
+    margin: 0px;
+
+    padding: 0px;
+
+    text-decoration: none;
+
+    list-style: none;
+
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+
+    font-size: 100%;
+
+    font-weight: normal
+
+}
+
+
+
+input,select {
+
+    outline: medium;
+
+    outline: none;
+
+    font-family: "Microsoft YaHei",Arial;
+
+    border:none
+
+}
+
+
+
+input[type="button"], input[type="submit"] {
+
+    cursor: pointer;
+
+}
+
+
+
+.l_float {
+
+    float: left;
+
+}
+
+
+
+.r_float {
+
+    float: right;
+
+}
+
+
+
+.clear {
+
+    clear: both;
+
+}
+
+
+
+
+
+/*会员登录*/
+
+.st-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: url(../images/bg_img.jpg) no-repeat center;
+
+    background-size: cover;
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    bottom:0;
+
+    right:0;
+
+    overflow: hidden;
+
+}
+
+
+
+.st-container .logo{
+
+    padding-top:20px;
+
+    margin-left:5%;
+
+    position: relative;
+
+}
+
+.content{
+
+    padding-top:28px;
+
+    position: absolute;
+
+    top:0;
+
+    right:5%
+
+}
+
+.content .select
+
+,.login_but{
+
+    color: #ffffff;
+
+    text-align: center;
+
+}
+
+.content .select p
+
+,.login_but p{
+
+    border:2px solid rgba(255,255,255,0.6);
+
+    -webkit-border-radius: 50px;
+
+    -moz-border-radius: 50px;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    display: block;
+
+}
+
+.content .select {
+
+    width: 100px;
+
+    height: 36px;
+
+    line-height: 36px;
+
+    background: transparent;
+
+    position: relative;
+
+    font-size: 16px;
+
+    float: right;
+
+    margin-right: 30px;
+
+}
+
+
+
+
+
+
+
+/*设置下拉框收起时的高度过渡动画*/
+
+.content .select ul
+
+,.login_but ul{
+
+    list-style-type: none;
+
+    width: 100%;
+
+    overflow-y: hidden;
+
+    position: absolute;
+
+    top: 40px;
+
+    left: 0;
+
+    max-height: 0;
+
+    transition: all .3s ease-out;
+
+}
+
+.content .select ul li
+
+,.login_but ul li{
+
+    cursor: pointer;
+
+    margin:6px 0;
+
+    -webkit-border-radius: 50px;
+
+    -moz-border-radius: 50px;
+
+    border-radius: 50px;
+
+    border:2px solid rgba(255,255,255,0.6);
+
+    background: #f0f;
+
+}
+
+.content .select ul li {
+
+    line-height: 36px;
+
+}
+
+
+
+.content .select ul li:hover {
+
+    border:2px solid rgba(255,255,255,0.6);
+
+}
+
+.content .select ul li.selected {
+
+    border:2px solid rgba(255,255,255,0.6);
+
+}
+
+/*下拉框展开时调用动画slide-down*/
+
+/*transform-origin设置缩放下拉框的基点位置*/
+
+.content .select.open ul
+
+,.login_but.open ul{
+
+    max-height: 230px;
+
+    -webkit-animation: slide-down .5s ease-in;
+
+    transition: all .3s ease-in;
+
+}
+
+
+
+/*为下拉框展开时添加名称为slide-down的关键帧动画*/
+
+@-webkit-keyframes slide-down{
+
+    0%{transform: scale(1,0);}
+
+    25%{transform: scale(1,1.2);}
+
+    50%{transform: scale(1,0.85);}
+
+    75%{transform: scale(1,1.05);}
+
+    100%{transform: scale(1,1);}
+
+}
+
+.content .login_topr {
+
+    float: right;
+
+    color: #fff;
+
+    font-size: 14px;
+
+}
+
+.content .login_topr img{
+
+    float:left;
+
+}
+
+.content .login_topr img:first-of-type{
+
+    margin-right:40px;
+
+}
+
+
+
+.login_but{
+
+    position: absolute;
+
+    bottom: 18%;
+
+    margin: 0 50%;
+
+    width: 260px;
+
+    left: -130px;
+
+    font-size: 20px;
+
+}
+
+.login_but p{
+
+    width: 260px;
+
+    height:50px;
+
+    margin:0 auto;
+
+    background: #ffe500;
+
+    line-height: 50px;
+
+    color: #000000;
+
+    border:none
+
+}
+
+
+
+.login_but ul{
+    top:-250px;
+
+}
+
+.login_but ul li {
+
+    height: 46px;
+
+    line-height: 46px;
+
+}
+
+.login_but ul li:hover {
+
+    border:2px solid #000000;
+
+    background: #000000;
+
+    color: #ffffff
+
+}
+
+.login_but ul li.selected {
+
+    border:2px solid #f003f0;
+
+    background: #f003f0;
+
+    color: #f0f2f5
+
+}
+
+
+
+
+
+.black_mark{
+
+    position: absolute;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0,0,0,0.68);
+
+    display: none;
+
+}
+
+.binding{
+
+    width: 42%;
+
+    position: absolute;
+
+    z-index:10;
+
+    left:29%;
+
+    top:48%;
+
+    display: none;
+
+}
+
+.binding input{
+
+    float: left;
+
+    height:60px;
+
+    line-height: 60px;
+
+}
+
+.binding input[type='text']{
+
+    width: 70%;
+
+    font-size: 16px;
+
+    color: #999999;
+
+    padding:0 10px;
+
+}
+
+.binding input[type='button']{
+
+    width: 14%;
+
+    background: #ffe400;
+
+    color:#000;
+
+    font-size: 20px;
+
+}
+
+
+
+/*.st-container:before {*/
+
+    /*content: "";*/
+
+    /*position: absolute;*/
+
+    /*width: 200px;*/
+
+    /*height: 100%;*/
+
+    /*top: 0;*/
+
+    /*left: -150px;*/
+
+    /*overflow: hidden;*/
+
+    /*background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+
+    /*background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, .2)), color-stop(100%, rgba(255, 255, 255, 0)));*/
+
+    /*background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+
+    /*background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+
+    /*-webkit-transform: skewX(-25deg);*/
+
+    /*-moz-transform: skewX(-25deg)*/
+
+/*}*/
+
+
+
+/*.st-container:hover:before {*/
+
+    /*left: 120%;*/
+
+    /*transition: left 1s ease 0s;*/
+
+    /*display: none*/
+
+/*}*/
+
+
+
+
+
+.light{
+
+    cursor:pointer;
+
+    position: absolute;
+
+    left: 100%;
+
+    top: 36%;
+
+    width: 500px;
+
+    height: 500px;
+
+    background:url("../images/light3.png") no-repeat center;
+
+    /*background: -webkit-radial-gradient(rgba(255, 255, 255,0.4), rgba(255, 255, 255,0.02), rgba(255, 255, 255,0));  !* Safari 5.1 to 6.0 *!*/
+
+    /*background: -o-radial-gradient(rgba(255, 255, 255,0.4), rgba(255, 255, 255,0.02), rgba(255, 255, 255,0)); !* Opera 11.1 to 12.0 *!*/
+
+    /*background: -moz-radial-gradient(rgba(255, 255, 255,0.4), rgba(255, 255, 255,0.02), rgba(255, 255, 255,0)); !* Firefox 3.6 to 15 *!*/
+
+    /*background: radial-gradient(rgba(255, 255, 255,0.4), rgba(255, 255, 255,0.02), rgba(255, 255, 255,0));!* 标准语法 (必须在最后) *!*/
+
+}
+@media (max-width:770px){
+	.st-container {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: url(../images/bg_img_mob.jpg) no-repeat center #050311;
+
+    background-size: cover;
+
+    -webkit-background-size: cover;
+
+    -moz-background-size: cover;
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    bottom:0;
+
+    right:0;
+
+    overflow: hidden;
+
+}
+}	
+@media (max-width:450px){
+	.l_float { width:30%; height:auto; overflow:hidden; float:left;}
+	.l_float img { width:100%; height:auto;}
+	.content .select { font-size:14px; line-height:30px; width:80px; margin-right:0px;}
+	.binding { width:90%; left:5%;}
+	.binding input[type='text'] { width: 74%;
+    font-size: 16px;
+    color: #999999;
+    padding: 0 5px;}
+
+	.binding input[type='button'] {
+    width: 22%;
+    background: #ffe400;
+    color: #000;
+    font-size: 20px}
+}	
+

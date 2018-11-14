@@ -1,0 +1,1 @@
+var cookiePrefix = 'bigwinner_';
